@@ -28,6 +28,16 @@ public class BankAccount {
         this.fullName = fullName;
     }
 
+    public BankAccount(String accountNo, double balance) {
+        this.accountNo = accountNo;
+        this.balance = balance;
+    }
+
+    public BankAccount(String accountNo, String fullName, double balance) {
+        this.accountNo = accountNo;
+        this.fullName = fullName;
+        this.balance = balance;
+    }
 
     //getters and setters
     public String getAccountNo() {
@@ -62,6 +72,45 @@ public class BankAccount {
     }
     public void setAccountEndDate(Date accountEndDate) {
         this.accountEndDate = accountEndDate;
+    }
+
+
+    public void showAccount() {
+        System.out.println("Account No: " + accountNo);
+        System.out.println("Full Name: " + fullName);
+        System.out.println("Balance: " + balance);
+    }
+
+
+    @Override
+    public String toString() {
+        return "BankAccount [accountNo=" + accountNo + ", fullName=" + fullName + ", balance=" + balance + ", isActive="
+                + isActive + ", accountStartDate=" + accountStartDate + ", accountEndDate=" + accountEndDate + "]";
+    }
+
+    public void deposit(double amount) {
+
+        if(!isActive) {
+            throw new IllegalArgumentException("You cannot take deposit ot a closed account");
+        }
+        if(amount <= 0) {
+            throw new IllegalArgumentException("You cannot make negative or zero deposit");
+        } else {
+            balance = balance + amount;
+        }
+    }   
+    
+    public void withdraw(double amount) {
+
+        if (!isActive) {
+            throw new IllegalArgumentException("You cannot withdraw from a closed account");
+        }
+        if (amount > balance) {
+            throw new IllegalArgumentException("You do not have sufficient balance");
+        } else {
+            balance = balance - amount;
+        }
+
     }
 
 
