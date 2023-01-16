@@ -1,4 +1,4 @@
-
+- GIT COMMANDS
 
 1. git ini (initialize a local git repo)
 
@@ -12,6 +12,8 @@
 
 6. git branch -M main (to switch from main to others)
 
-7. git git remote add origin <url address>
+7. git remote add origin <url address>
 
 8. git push -u origin main
+
+9. git pull
